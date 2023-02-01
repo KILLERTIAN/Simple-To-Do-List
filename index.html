@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <link rel="shortcut icon" href="favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Poppins&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="check-regular-24.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <h2 class="heading">To-Do List</h2>
+
+    <div class="todo-list">
+        <input type="text" class="todo-input" id="todo-input">
+        <button class="todo-button" id="add-button">Add</button>
+
+    </div>
+    <div id="todo-container"></div>
+
+    <script>
+        // Get the input field and add button
+        const inputField = document.getElementById("todo-input");
+        const addButton = document.getElementById("add-button");
+
+        // Get the to-do item container
+        const todoContainer = document.getElementById("todo-container");
+
+        // Add a new to-do item
+        addButton.addEventListener("click", function () {
+            // Get the to-do item text
+            const todoText = inputField.value;
+
+            // Create a new to-do item element
+            const todoItem = document.createElement("div");
+            todoItem.classList.add("todo-item");
+            todoItem.innerHTML = todoText;
+
+            // Add the click event listener to mark the to-do item as completed
+            todoItem.addEventListener("click", function () {
+                todoItem.classList.toggle("completed");
+            });
+
+            // Add the to-do item to the container
+            todoContainer.appendChild(todoItem);
+
+            // Clear the input field
+            inputField.value = "";
+        });
+    </script>
+</body>
+
+</html>
